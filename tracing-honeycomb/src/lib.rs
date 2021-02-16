@@ -13,14 +13,21 @@
 
 use eaze_tracing_distributed as tracing_distributed;
 
+use rand::{self, Rng};
+
 mod honeycomb;
+mod span_id;
+mod trace_id;
 mod visitor;
 
-pub use crate::honeycomb::{HoneycombTelemetry, SpanId, TraceId};
-pub use crate::visitor::HoneycombVisitor;
-use rand::{self, Rng};
+pub use honeycomb::HoneycombTelemetry;
+pub use span_id::SpanId;
+pub use trace_id::TraceId;
 #[doc(no_inline)]
 pub use tracing_distributed::{TelemetryLayer, TraceCtxError};
+pub use visitor::HoneycombVisitor;
+
+pub(crate) mod deterministic_sampler;
 
 /// Register the current span as the local root of a distributed trace.
 ///
@@ -94,7 +101,7 @@ pub fn new_honeycomb_telemetry_layer(
 pub fn new_honeycomb_telemetry_layer_with_trace_sampling(
     service_name: &'static str,
     honeycomb_config: libhoney::Config,
-    sample_rate: u128,
+    sample_rate: u32,
 ) -> TelemetryLayer<HoneycombTelemetry, SpanId, TraceId> {
     let instance_id: u64 = rand::thread_rng().gen();
     TelemetryLayer::new(
