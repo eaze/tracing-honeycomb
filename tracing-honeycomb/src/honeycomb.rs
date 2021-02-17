@@ -1,3 +1,5 @@
+use eaze_tracing_distributed as tracing_distributed;
+
 use crate::visitor::{event_to_values, span_to_values, HoneycombVisitor};
 use libhoney::FieldHolder;
 use std::collections::HashMap;

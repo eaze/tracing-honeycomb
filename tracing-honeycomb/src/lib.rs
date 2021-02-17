@@ -11,6 +11,8 @@
 //!
 //! As a tracing layer, `TelemetryLayer` can be composed with other layers to provide stdout logging, filtering, etc.
 
+use eaze_tracing_distributed as tracing_distributed;
+
 mod honeycomb;
 mod visitor;
 

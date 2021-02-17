@@ -1,3 +1,5 @@
+use eaze_tracing_honeycomb as tracing_honeycomb;
+
 use std::{env, str::FromStr, time::Duration};
 use tokio::process::Command;
 use tokio::time::delay_for;

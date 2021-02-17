@@ -1,3 +1,5 @@
+use eaze_tracing_distributed as tracing_distributed;
+
 use crate::honeycomb::{SpanId, TraceId};
 use ::libhoney::{json, Value};
 use chrono::{DateTime, Utc};
