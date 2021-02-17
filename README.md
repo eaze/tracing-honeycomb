@@ -1,4 +1,4 @@
-[![tracing-honeycomb on crates.io](https://img.shields.io/crates/v/tracing-honeycomb)](https://crates.io/crates/tracing-honeycomb) [![Documentation (latest release)](https://docs.rs/tracing-honeycomb/badge.svg)](https://docs.rs/tracing-honeycomb/) [![Documentation (master)](https://img.shields.io/badge/docs-master-brightgreen)](https://inanna-malick.github.io/tracing-honeycomb/tracing_honeycomb/) [![License](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE) [![CircleCI status](https://circleci.com/gh/inanna-malick/tracing-honeycomb.svg?style=svg)](https://app.circleci.com/pipelines/github/inanna-malick/tracing-honeycomb)
+[![tracing-honeycomb on crates.io](https://img.shields.io/crates/v/eaze-tracing-honeycomb)](https://crates.io/crates/eaze-tracing-honeycomb) [![Documentation (latest release)](https://docs.rs/eaze-tracing-honeycomb/badge.svg)](https://docs.rs/eaze-tracing-honeycomb/) [![License](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE)
 
 # tracing-honeycomb
 
