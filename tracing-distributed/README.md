@@ -2,7 +2,7 @@
 
 # eaze-tracing-distributed
 
-Current version: 0.2.0-eaze.3
+Current version: 0.2.0-eaze.4
 
 This crate provides:
 - `TelemetryLayer`, a generic tracing layer that handles publishing spans and events to arbitrary backends
