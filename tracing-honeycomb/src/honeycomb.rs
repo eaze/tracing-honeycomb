@@ -54,7 +54,7 @@ impl HoneycombTelemetry {
         if let Some(sample_rate) = self.sample_rate {
             crate::deterministic_sampler::sample(sample_rate, trace_id)
         } else {
-            false
+            true
         }
     }
 }
