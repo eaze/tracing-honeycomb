@@ -1,6 +1,6 @@
 [package]
 name = "eaze-tracing-honeycomb"
-version = "0.2.1-eaze.4"
+version = "0.2.1-eaze.5"
 authors = [
     "Inanna Malick <inanna@recursion.wtf>",
     "Jeremiah Senkpiel <fishrock123@rocketmail.com>"
