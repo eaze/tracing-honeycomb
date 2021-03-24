@@ -1,3 +1,4 @@
+use chrono::{DateTime, Utc};
 use eaze_tracing_distributed as tracing_distributed;
 
 use crate::visitor::{event_to_values, span_to_values, HoneycombVisitor};
@@ -33,7 +34,7 @@ impl HoneycombTelemetry {
         }
     }
 
-    fn report_data(&self, data: HashMap<String, libhoney::Value>) {
+    fn report_data(&self, data: HashMap<String, libhoney::Value>, timestamp: DateTime<Utc>) {
         // succeed or die. failure is unrecoverable (mutex poisoned)
         #[cfg(not(feature = "use_parking_lot"))]
         let mut client = self.honeycomb_client.lock().unwrap();
@@ -42,6 +43,8 @@ impl HoneycombTelemetry {
 
         let mut ev = client.new_event();
         ev.add(data);
+        ev.set_timestamp(timestamp);
+
         let res = ev.send(&mut client);
         if let Err(err) = res {
             // unable to report telemetry (buffer full) so log msg to stderr
@@ -70,15 +73,15 @@ impl Telemetry for HoneycombTelemetry {
 
     fn report_span(&self, span: Span<Self::Visitor, Self::SpanId, Self::TraceId>) {
         if self.should_report(&span.trace_id) {
-            let data = span_to_values(span);
-            self.report_data(data);
+            let (data, timestamp) = span_to_values(span);
+            self.report_data(data, timestamp);
         }
     }
 
     fn report_event(&self, event: Event<Self::Visitor, Self::SpanId, Self::TraceId>) {
         if self.should_report(&event.trace_id) {
-            let data = event_to_values(event);
-            self.report_data(data);
+            let (data, timestamp) = event_to_values(event);
+            self.report_data(data, timestamp);
         }
     }
 }

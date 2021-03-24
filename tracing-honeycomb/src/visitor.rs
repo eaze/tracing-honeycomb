@@ -68,7 +68,7 @@ fn mk_field_name(s: String) -> String {
 
 pub(crate) fn event_to_values(
     event: Event<HoneycombVisitor, SpanId, TraceId>,
-) -> HashMap<String, libhoney::Value> {
+) -> (HashMap<String, libhoney::Value>, DateTime<Utc>) {
     let mut values = event.values.0;
 
     values.insert(
@@ -95,19 +95,16 @@ pub(crate) fn event_to_values(
         json!(format!("{}", event.meta.level())),
     );
 
-    let initialized_at: DateTime<Utc> = event.initialized_at.into();
-    values.insert("Timestamp".to_string(), json!(initialized_at.to_rfc3339()));
-
     // not honeycomb-special but tracing-provided
     values.insert("name".to_string(), json!(event.meta.name()));
     values.insert("target".to_string(), json!(event.meta.target()));
 
-    values
+    (values, event.initialized_at.into())
 }
 
 pub(crate) fn span_to_values(
     span: Span<HoneycombVisitor, SpanId, TraceId>,
-) -> HashMap<String, libhoney::Value> {
+) -> (HashMap<String, libhoney::Value>, DateTime<Utc>) {
     let mut values = span.values.0;
 
     values.insert(
@@ -136,9 +133,6 @@ pub(crate) fn span_to_values(
 
     values.insert("level".to_string(), json!(format!("{}", span.meta.level())));
 
-    let initialized_at: DateTime<Utc> = span.initialized_at.into();
-    values.insert("Timestamp".to_string(), json!(initialized_at.to_rfc3339()));
-
     // not honeycomb-special but tracing-provided
     values.insert("name".to_string(), json!(span.meta.name()));
     values.insert("target".to_string(), json!(span.meta.target()));
@@ -149,9 +143,9 @@ pub(crate) fn span_to_values(
             values.insert("duration_ms".to_string(), json!(d.as_secs_f64() * MILLIS_PER_SECOND));
         }
         Err(e) => {
-            eprintln!("error comparing system times in tracing-honeycomg, indicates possible clock skew: {:?}", e);
+            eprintln!("error comparing system times in tracing-honeycomb, indicates possible clock skew: {:?}", e);
         }
     }
 
-    values
+    (values, span.initialized_at.into())
 }
