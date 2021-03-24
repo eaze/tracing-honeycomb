@@ -13,7 +13,7 @@ As a tracing layer, `TelemetryLayer` can be composed with other layers to provid
 Add the following to your Cargo.toml to get started.
 
 ```toml
-tracing-honeycomb = "0.2.1-eaze.5"
+tracing-honeycomb = "0.2.1-eaze.6"
 ```
 
 ### Propagating distributed tracing metadata
