@@ -1,6 +1,6 @@
 [package]
 name = "eaze-tracing-distributed"
-version = "0.2.0-eaze.4"
+version = "0.2.0-eaze.5"
 authors = [
     "Inanna Malick <inanna@recursion.wtf>",
     "Jeremiah Senkpiel <fishrock123@rocketmail.com>"
