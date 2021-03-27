@@ -140,7 +140,10 @@ pub(crate) fn span_to_values(
     match span.completed_at.duration_since(span.initialized_at) {
         Ok(d) => {
             // honeycomb-special (I think, todo: get full list of known values)
-            values.insert("duration_ms".to_string(), json!(d.as_secs_f64() * MILLIS_PER_SECOND));
+            values.insert(
+                "duration_ms".to_string(),
+                json!(d.as_secs_f64() * MILLIS_PER_SECOND),
+            );
         }
         Err(e) => {
             eprintln!("error comparing system times in tracing-honeycomb, indicates possible clock skew: {:?}", e);

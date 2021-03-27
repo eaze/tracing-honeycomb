@@ -24,6 +24,20 @@ impl HoneycombTelemetry {
     pub(crate) fn new(cfg: libhoney::Config, sample_rate: Option<u32>) -> Self {
         let honeycomb_client = libhoney::init(cfg);
 
+        // Handle the libhoney response channel by consuming and ignoring messages. This prevents a
+        // deadlock because the responses() channel is bounded and gains an item for every event
+        // emitted.
+        let responses = honeycomb_client.responses();
+        std::thread::spawn(move || {
+            loop {
+                if responses.recv().is_err() {
+                    // If we receive an error, the channel is empty & disconnected. No need to keep
+                    // this thread around.
+                    break;
+                }
+            }
+        });
+
         // publishing requires &mut so just mutex-wrap it
         // FIXME: may not be performant, investigate options (eg mpsc)
         let honeycomb_client = Mutex::new(honeycomb_client);
