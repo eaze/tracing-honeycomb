@@ -10,7 +10,14 @@ This repo contains the source code for:
 
 See [`tracing-honeycomb`](tracing-honeycomb/README.md) for examples.
 
+## Credits
+
+The `tracing-honeycomb` and `tracing-distributed` crates originate from [inanna-malick/tracing-honeycomb](https://github.com/inanna-malick/tracing-honeycomb), 
+where the original author, [Inanna Malick](https://github.com/inanna-malick), did great work getting these crates in usable condition.
+
+This repository is now the authoritative source of these two crates.
+
 ## License
 
-This project is licensed under the terms of the MIT license
+Licensed under the [MIT License](LICENSE.md)
 
