@@ -2,9 +2,9 @@
 [![Documentation (latest release)](https://docs.rs/tracing-distributed/badge.svg)](https://docs.rs/tracing-distributed/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE)
 
-# eaze-tracing-distributed
+# tracing-distributed
 
-Current version: 0.2.0-eaze.7
+Current version: 0.3.0
 
 This crate provides:
 - `TelemetryLayer`, a generic tracing layer that handles publishing spans and events to arbitrary backends

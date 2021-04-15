@@ -2,7 +2,7 @@
 [![Documentation (latest release)](https://docs.rs/tracing-honeycomb/badge.svg)](https://docs.rs/tracing-honeycomb/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE)
 
-# eaze-tracing-honeycomb
+# tracing-honeycomb
 
 This crate provides:
 - A tracing layer, `TelemetryLayer`, that can be used to publish trace data to honeycomb.io
@@ -15,7 +15,7 @@ As a tracing layer, `TelemetryLayer` can be composed with other layers to provid
 Add the following to your Cargo.toml to get started.
 
 ```toml
-tracing-honeycomb = "0.2.1-eaze.7"
+tracing-honeycomb = "0.3.0"
 ```
 
 ### Propagating distributed tracing metadata
