@@ -7,7 +7,7 @@ authors = [
 ]
 edition = "2018"
 description = "Tracing layer for multiprocess telemetry"
-repository = "https://github.com/eaze/honeycomb-tracing"
+repository = "https://github.com/eaze/tracing-honeycomb"
 keywords = ["tracing", "instrumentation"]
 license = "MIT"
 readme = "README.md"
