@@ -9,12 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3.0] - 2021-04-15
 
-- Relaxed dependency constraints.
-    - Was included in 0.2.1-eaze.2
-- Fixed a panic in case of multiple current callers. See [#3](https://github.com/eaze/tracing-honeycomb/pull/3).
-    - Was included in 0.2.1-eaze.3
+### Additions
 - Added `parking_lot` feature.
-    - Was included in 0.2.1-eaze.2
+
+### Fixes
+- Relaxed dependency constraints.
+- Fixed a panic in case of multiple current callers. See [#3](https://github.com/eaze/tracing-honeycomb/pull/3).
+
+(These were also included in the 0.2.0-eaze.X versions.)
 
 ## Pre-0.3.0
 

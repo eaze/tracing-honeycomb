@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Properly set the `timestamp` field in libhoney.
 - Relaxed dependency constraints.
 
-(These were also included in the 0.2.0-eaze.X versions.)
+(These were also included in the 0.2.1-eaze.X versions.)
 
 ## Pre-0.3.0
 
