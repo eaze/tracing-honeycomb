@@ -1,6 +1,6 @@
 [package]
 name = "tracing-distributed"
-version = "0.3.0"
+version = "0.3.1"
 authors = [
     "Inanna Malick <inanna@recursion.wtf>",
     "Jeremiah Senkpiel <fishrock123@rocketmail.com>"

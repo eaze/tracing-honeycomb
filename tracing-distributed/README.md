@@ -4,7 +4,7 @@
 
 # tracing-distributed
 
-Current version: 0.3.0
+Current version: 0.3.1
 
 This crate provides:
 - `TelemetryLayer`, a generic tracing layer that handles publishing spans and events to arbitrary backends
