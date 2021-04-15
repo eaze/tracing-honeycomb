@@ -1,5 +1,5 @@
 use std::borrow::Cow;
-use std::convert::{Infallible, TryInto};
+use std::convert::{Infallible, TryFrom};
 use std::fmt::{self, Display};
 use std::str::FromStr;
 
@@ -47,25 +47,25 @@ impl AsRef<[u8]> for TraceId {
     }
 }
 
-impl Into<String> for TraceId {
-    fn into(self) -> String {
-        format!("{}", self)
+impl From<TraceId> for String {
+    fn from(trace_id: TraceId) -> String {
+        format!("{}", trace_id)
     }
 }
 
-impl TryInto<u128> for TraceId {
+impl TryFrom<TraceId> for u128 {
     type Error = uuid::Error;
 
-    fn try_into(self) -> Result<u128, Self::Error> {
-        Ok(Uuid::parse_str(&self.0)?.as_u128())
+    fn try_from(trace_id: TraceId) -> Result<u128, Self::Error> {
+        Ok(Uuid::parse_str(&trace_id.0)?.as_u128())
     }
 }
 
-impl TryInto<Uuid> for TraceId {
+impl TryFrom<TraceId> for Uuid {
     type Error = uuid::Error;
 
-    fn try_into(self) -> Result<Uuid, Self::Error> {
-        Ok(Uuid::parse_str(&self.0)?)
+    fn try_from(trace_id: TraceId) -> Result<Uuid, Self::Error> {
+        Uuid::parse_str(&trace_id.0)
     }
 }
 
