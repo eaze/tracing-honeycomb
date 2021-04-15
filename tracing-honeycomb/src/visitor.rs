@@ -1,5 +1,3 @@
-use eaze_tracing_distributed as tracing_distributed;
-
 use chrono::{DateTime, Utc};
 use libhoney::{json, Value};
 use std::collections::HashMap;
