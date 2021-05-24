@@ -182,7 +182,7 @@ impl Builder<LibhoneyReporter> {
 }
 
 impl<R: Reporter> Builder<R> {
-    /// Enables samling for the telemetry layer.
+    /// Enables sampling for the telemetry layer.
     ///
     /// The `sample_rate` on the `libhoney::Config` is different from this in an important way.
     /// `libhoney` samples `Event` data, which is individual spans on each trace.
