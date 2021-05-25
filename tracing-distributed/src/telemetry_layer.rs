@@ -15,8 +15,8 @@ use std::sync::RwLock;
 /// A `tracing_subscriber::Layer` that publishes events and spans to some backend
 /// using the provided `Telemetry` capability.
 pub struct TelemetryLayer<Telemetry, SpanId, TraceId> {
-    pub(crate) telemetry: Telemetry,
     service_name: &'static str,
+    pub(crate) telemetry: Telemetry,
     // used to construct span ids to avoid collisions
     pub(crate) trace_ctx_registry: TraceCtxRegistry<SpanId, TraceId>,
 }
@@ -205,12 +205,9 @@ where
         } else if event.is_root() {
             // don't bother checking thread local if span is explicitly root according to this fn
             None
-        } else if let Some(parent_id) = ctx.current_span().id() {
-            // implicit parent from threadlocal ctx
-            Some(parent_id.clone())
         } else {
-            // no parent span, thus this is a root span
-            None
+            // implicit parent from threadlocal ctx, or root span if none
+            ctx.current_span().id().cloned()
         };
 
         match parent_id {
