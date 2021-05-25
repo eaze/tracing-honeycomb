@@ -7,12 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.4.0] - 2021-05-25
+## [0.4.1] - 2021-05-25
+
+(0.4.0 was yanked as it was done from the wrong git commit.)
 
 ### Additions
 - New `Builder` struct for constructing the `hOneycombTelemetry` instance, which now supports multiple reporting backends.
 - New `StdoutReporter` backed for use in AWS Lambda and similar environments.
     - See https://docs.honeycomb.io/getting-data-in/integrations/aws/aws-lambda/
+
+## [0.4.0] - 2021-05-25
+
+_(Yanked, wrong git commit)_
 
 ## [0.3.0] - 2021-04-15
 
