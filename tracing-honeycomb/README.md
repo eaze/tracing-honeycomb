@@ -15,7 +15,7 @@ As a tracing layer, `TelemetryLayer` can be composed with other layers to provid
 Add the following to your Cargo.toml to get started.
 
 ```toml
-tracing-honeycomb = "0.3.0"
+tracing-honeycomb = "0.4.0"
 ```
 
 ### Propagating distributed tracing metadata
