@@ -1,6 +1,6 @@
 [package]
 name = "tracing-honeycomb"
-version = "0.4.1"
+version = "0.4.2"
 authors = [
     "Inanna Malick <inanna@recursion.wtf>",
     "Jeremiah Senkpiel <fishrock123@rocketmail.com>"

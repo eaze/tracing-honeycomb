@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.2] - 2021-06-28
+
+### Fixes
+
+Previously `parent_id` and `span_id` spans were incorrectly prefixed with `span-`.
+Honeycomb interprets this fine for `span_id` but gets confused by it in `parent_id`.
+
+This release removes the `span-` prefix in these as it causes issues.
+
 ## [0.4.1] - 2021-05-25
 
 (0.4.0 was yanked as it was done from the wrong git commit.)
