@@ -81,7 +81,7 @@ pub(crate) fn event_to_values(
         "trace.parent_id".to_string(),
         event
             .parent_id
-            .map(|pid| json!(format!("span-{}", pid.to_string())))
+            .map(|pid| json!(pid.to_string()))
             .unwrap_or(json!(null)),
     );
 
@@ -108,7 +108,7 @@ pub(crate) fn span_to_values(
     values.insert(
         // magic honeycomb string (trace.span_id)
         "trace.span_id".to_string(),
-        json!(format!("span-{}", span.id.to_string())),
+        json!(span.id.to_string()),
     );
 
     values.insert(
@@ -122,7 +122,7 @@ pub(crate) fn span_to_values(
         // magic honeycomb string (trace.parent_id)
         "trace.parent_id".to_string(),
         span.parent_id
-            .map(|pid| json!(format!("span-{}", pid.to_string())))
+            .map(|pid| json!(pid.to_string()))
             .unwrap_or(json!(null)),
     );
 
