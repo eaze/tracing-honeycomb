@@ -237,7 +237,7 @@ where
                         parent_id: Some(self.trace_ctx_registry.promote_span_id(parent_id)),
                         initialized_at,
                         meta: event.metadata(),
-                        service_name: &self.service_name,
+                        service_name: self.service_name,
                         values: visitor,
                     };
 

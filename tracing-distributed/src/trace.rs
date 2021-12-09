@@ -87,6 +87,21 @@ pub enum TraceCtxError {
     NoParentNodeHasTraceCtx,
 }
 
+impl std::fmt::Display for TraceCtxError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        use TraceCtxError::*;
+        write!(f, "{}",
+            match self {
+                TelemetryLayerNotRegistered => "`TelemetryLayer` is not a registered subscriber of the current Span",
+                RegistrySubscriberNotRegistered => "no `tracing_subscriber::Registry` is a registered subscriber of the current Span",
+                NoEnabledSpan => "the span is not enabled with an associated subscriber",
+                NoParentNodeHasTraceCtx => "unable to evaluate trace context; assert `register_dist_tracing_root` is called in some parent span",
+            })
+    }
+}
+
+impl std::error::Error for TraceCtxError {}
+
 /// A `Span` holds ready-to-publish information gathered during the lifetime of a `tracing::Span`.
 #[derive(Debug, Clone)]
 pub struct Span<Visitor, SpanId, TraceId> {
