@@ -46,6 +46,8 @@ impl From<TryFromIntError> for ParseSpanIdError {
     }
 }
 
+impl std::error::Error for ParseSpanIdError {}
+
 impl FromStr for SpanId {
     type Err = ParseSpanIdError;
 
