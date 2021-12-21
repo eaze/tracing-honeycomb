@@ -41,9 +41,6 @@ jobs:
     - name: update clippy
       run: rustup toolchain update stable
 
-    - name: install nightly
-      run: rustup toolchain install nightly
-
     - name: clippy
       run: cargo clippy --workspace --all-targets
 
@@ -51,4 +48,4 @@ jobs:
       run: cargo fmt --all -- --check
 
     - name: docs
-      run: cargo +nightly doc --no-deps
+      run: cargo doc --no-deps
