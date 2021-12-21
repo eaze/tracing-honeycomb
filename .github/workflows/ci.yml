@@ -51,4 +51,4 @@ jobs:
       run: cargo fmt --all -- --check
 
     - name: docs
-      run: cargo clean && cargo +nightly doc --no-deps
+      run: cargo +nightly doc --no-deps
