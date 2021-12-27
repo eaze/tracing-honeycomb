@@ -1,6 +1,6 @@
 [package]
 name = "tracing-honeycomb"
-version = "0.4.2"
+version = "0.4.3"
 authors = [
     "Inanna Malick <inanna@recursion.wtf>",
     "Jeremiah Senkpiel <fishrock123@rocketmail.com>"
@@ -18,7 +18,7 @@ use_parking_lot = ["parking_lot", "tracing-distributed/use_parking_lot"]
 [dependencies]
 tracing = "0.1.12"
 tracing-core = "0.1.9"
-tracing-distributed =  { path = "../tracing-distributed", version = "0.3" }
+tracing-distributed =  { path = "../tracing-distributed", version = ">= 0.3, < 0.5" }
 libhoney-rust = "0.1.3"
 rand = "0.7"
 chrono = "0.4"
@@ -31,7 +31,7 @@ serde_json = "1"
 [dev-dependencies]
 tracing-attributes = "0.1.5"
 futures-preview = { version = "0.3.0-alpha.19", features = ["compat"] }
-tracing-subscriber = "0.2.0"
+tracing-subscriber = "0.3.0"
 tokio = { version = "0.2", features = ["full"] }
 tracing-futures = "0.2.1"
 proptest = "0.9.5"

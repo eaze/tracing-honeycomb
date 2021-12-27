@@ -1,6 +1,6 @@
 [package]
 name = "tracing-distributed"
-version = "0.3.1"
+version = "0.4.0"
 authors = [
     "Inanna Malick <inanna@recursion.wtf>",
     "Jeremiah Senkpiel <fishrock123@rocketmail.com>"
@@ -18,7 +18,7 @@ use_parking_lot = ["parking_lot"]
 [dependencies]
 tracing = "0.1.12"
 tracing-core = "0.1.9"
-tracing-subscriber = "0.2.0"
+tracing-subscriber = "0.3"
 itertools = "0.9"
 parking_lot = { version = "0.11", optional = true }
 

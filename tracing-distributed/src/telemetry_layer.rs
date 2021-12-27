@@ -179,7 +179,7 @@ where
     V: 'static + tracing::field::Visit + Send + Sync,
     T: 'static + Telemetry<Visitor = V, TraceId = TraceId, SpanId = SpanId>,
 {
-    fn new_span(&self, attrs: &Attributes, id: &Id, ctx: Context<S>) {
+    fn on_new_span(&self, attrs: &Attributes, id: &Id, ctx: Context<S>) {
         let span = ctx.span(id).expect("span data not found during new_span");
         let mut extensions_mut = span.extensions_mut();
         extensions_mut.insert(SpanInitAt::new());
@@ -237,7 +237,7 @@ where
                         parent_id: Some(self.trace_ctx_registry.promote_span_id(parent_id)),
                         initialized_at,
                         meta: event.metadata(),
-                        service_name: &self.service_name,
+                        service_name: self.service_name,
                         values: visitor,
                     };
 
