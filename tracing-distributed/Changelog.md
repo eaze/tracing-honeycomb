@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2021-12-27
+
+### Deps
+
+- Update to tracing-subscriber 0.3
+
+### Additions
+
+- Implemented Display and Error for `TraceCtxError`
+
 ## [0.3.1] - 2021-04-15
 
 ### Fixes
