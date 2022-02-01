@@ -112,7 +112,6 @@ pub struct Span<Visitor, SpanId, TraceId> {
     /// optional parent span id
     pub parent_id: Option<SpanId>,
     /// UTC time at which this span was initialized
-    pub initialized_at: SystemTime,
     /// `chrono::Duration` elapsed between the time this span was initialized and the time it was completed
     pub completed_at: SystemTime,
     /// `tracing::Metadata` for this span
