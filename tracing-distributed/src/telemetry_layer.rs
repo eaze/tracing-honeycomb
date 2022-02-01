@@ -182,7 +182,6 @@ where
     fn on_new_span(&self, attrs: &Attributes, id: &Id, ctx: Context<S>) {
         let span = ctx.span(id).expect("span data not found during new_span");
         let mut extensions_mut = span.extensions_mut();
-        extensions_mut.insert(SpanInitAt::new());
 
         let mut visitor: V = self.telemetry.mk_visitor();
         attrs.record(&mut visitor);
@@ -268,9 +267,6 @@ where
             let visitor: V = extensions_mut
                 .remove()
                 .expect("should be present on all spans");
-            let SpanInitAt(initialized_at) = extensions_mut
-                .remove()
-                .expect("should be present on all spans");
 
             let completed_at = SystemTime::now();
 
@@ -285,7 +281,6 @@ where
                 id: self.trace_ctx_registry.promote_span_id(id),
                 meta: span.metadata(),
                 parent_id,
-                initialized_at,
                 trace_id: trace_ctx.trace_id,
                 completed_at,
                 service_name: self.service_name,
@@ -317,15 +312,8 @@ where
 // TODO: delete?
 struct LazyTraceCtx<SpanId, TraceId>(TraceCtx<SpanId, TraceId>);
 
-struct SpanInitAt(SystemTime);
 
-impl SpanInitAt {
-    fn new() -> Self {
-        let initialized_at = SystemTime::now();
 
-        Self(initialized_at)
-    }
-}
 
 #[cfg(test)]
 mod tests {
